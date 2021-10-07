@@ -1,11 +1,15 @@
 const fs = require('fs');
 const http = require('http');
 const path = require('path');
+const express = require('express');
 
 const hostname = "localhost";
 const port = 3000;
 
-const server = http.createServer((req, res) => {
+const app = express();
+// const mog = morgan();
+
+app.use((req, res, next) => {
     console.log("Request for " + req.url + " by method " + req.method);
 
     if (req.method == 'GET') {
@@ -40,9 +44,13 @@ const server = http.createServer((req, res) => {
         res.end('<html><body><h1>Error 404: ' + req.method + ' not support</h1></body></html>');
         return;
     }
-});
+})
+
+const server_express = http.createServer(app);
+
+// const server = http.createServer();
 
 
-server.listen(port, hostname, () => {
+server_express.listen(port, hostname, () => {
     console.log(`sever running at http://${hostname}:${port}`)
 })

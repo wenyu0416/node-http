@@ -16,5 +16,8 @@
     "bugs": {
         "url": "https://github.com/wenyu0416/node-http/issues"
     },
-    "homepage": "https://github.com/wenyu0416/node-http#readme"
+    "homepage": "https://github.com/wenyu0416/node-http#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
 }
